@@ -22,16 +22,28 @@ for ls in x:
                 for m in tokenizer_obj.tokenize(ls, mode)])
 
 tmp = list(chain.from_iterable(tmp))
-print(tmp)
+# print(tmp)
+# for item in tmp:
+#     print(item)
 
 # [('願っ', ['動詞', '非自立可能', '*', '*', '五段-ワア行', '連用形-促音便'])]
-# item[1][0] は大分類．item[1][1] は小分類
-indices = [i for i, item in enumerate(tmp) if item[1][0] in (
-    '名詞', '副詞', '代名詞', '動詞')
-    and item[1][1] != '非自立可能'
-    and item[1][1] != '数詞']+[len(tmp)]
 
-print(indices)
+# item[1][0] は大分類．item[1][1] は小分類
+# tmp_indices = [i for i, item in enumerate(tmp) if item[1][0] in (
+#     '名詞', '副詞', '代名詞', '動詞')
+#     and item[1][1] != '非自立可能' and item[1][1] != '数詞']+[len(tmp)]
+
+# tmp_indices2 = [i-1 for i, item in enumerate(tmp) if item[1][0] in (
+#     '動詞', '補助記号')
+#     and item[1][1] == '数詞']+[len(tmp)] + [0]
+
+indices = [i+1 for i, item in enumerate(tmp) 
+            if item[1][0] in ['句読点']
+            or item[1][1] in ['格助詞']]
+indices = [0] + indices + [len(tmp)]
+# indices = sorted(list(set(tmp_indices + tmp_indices2)))
+
+# print(indices)
 
 x = 0
 result = []
