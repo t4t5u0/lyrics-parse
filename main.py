@@ -22,8 +22,8 @@ for ls in x:
 
 tmp = list(chain.from_iterable(tmp))
 # print(tmp)
-for item in tmp:
-    print(item)
+# for item in tmp:
+#     print(item)
 
 # [('願っ', ['動詞', '非自立可能', '*', '*', '五段-ワア行', '連用形-促音便'])]
 
@@ -41,12 +41,12 @@ indices = [i+1 for i, item in enumerate(tmp)
             or item[1][1] in ['格助詞']]
 indices = [0] + indices + [len(tmp)]
 
-print(indices)
+# print(indices)
 
 delete_indices = [i for i, item in enumerate(tmp) 
                     if item[1][0] in ['形状詞']]
 
-print(delete_indices)
+# print(delete_indices)
 
 for item in delete_indices:
     try:
