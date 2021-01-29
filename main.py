@@ -22,29 +22,18 @@ for ls in x:
 
 tmp = list(chain.from_iterable(tmp))
 # print(tmp)
-# for item in tmp:
-#     print(item)
+for item in tmp:
+    print(item)
 
-# [('願っ', ['動詞', '非自立可能', '*', '*', '五段-ワア行', '連用形-促音便'])]
-
-# item[1][0] は大分類．item[1][1] は小分類
-# tmp_indices = [i for i, item in enumerate(tmp) if item[1][0] in (
-#     '名詞', '副詞', '代名詞', '動詞')
-#     and item[1][1] != '非自立可能' and item[1][1] != '数詞']+[len(tmp)]
-
-# tmp_indices2 = [i-1 for i, item in enumerate(tmp) if item[1][0] in (
-#     '動詞', '補助記号')
-#     and item[1][1] == '数詞']+[len(tmp)] + [0]
-
-indices = [i+1 for i, item in enumerate(tmp) 
-            if item[1][0] in ['補助記号']
-            or item[1][1] in ['格助詞']]
+indices = [i+1 for i, item in enumerate(tmp)
+           if (item[1][0] in ['補助記号'])
+           or (item[1][1] in ['格助詞'] and tmp[min(i+1, len(tmp)-1)][1][0] not in ['補助記号'])]
 indices = [0] + indices + [len(tmp)]
 
 # print(indices)
 
-delete_indices = [i for i, item in enumerate(tmp) 
-                    if item[1][0] in ['形状詞']]
+delete_indices = [i for i, item in enumerate(tmp)
+                  if item[1][0] in ['形状詞']]
 
 # print(delete_indices)
 
@@ -57,7 +46,7 @@ for item in delete_indices:
         try:
             indices.remove(item-1)
         except:
-            pass   
+            pass
         indices.append(item)
 indices = sorted(indices)
 
