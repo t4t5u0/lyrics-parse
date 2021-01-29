@@ -22,8 +22,8 @@ for ls in x:
 
 tmp = list(chain.from_iterable(tmp))
 # print(tmp)
-for item in tmp:
-    print(item)
+# for item in tmp:
+#     print(item)
 
 indices = [i+1 for i, item in enumerate(tmp)
            if (item[1][0] in ['補助記号'])
