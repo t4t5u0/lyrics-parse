@@ -23,8 +23,9 @@ for ls in x:
 
 tmp = list(chain.from_iterable(tmp))
 
+# 数枚 が 数 枚 になるのを解消
 indices = [i for i, item in enumerate(tmp) if item[1][0] in (
-    '名詞', '副詞', '代名詞', '動詞') and item[1][1] != '非自立可能']+[len(tmp)]
+    '名詞',  '副詞', '代名詞', '動詞') and item[1][1] != '非自立可能' and item[1][1] != '数詞']+[len(tmp)]
 
 x = 0
 result = []
