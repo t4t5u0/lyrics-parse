@@ -38,7 +38,7 @@ tmp = list(chain.from_iterable(tmp))
 #     and item[1][1] == '数詞']+[len(tmp)] + [0]
 
 indices = [i+1 for i, item in enumerate(tmp) 
-            if item[1][0] in ['句読点']
+            if item[1][0] in ['補助記号']
             or item[1][1] in ['格助詞']]
 indices = [0] + indices + [len(tmp)]
 # indices = sorted(list(set(tmp_indices + tmp_indices2)))
@@ -53,3 +53,4 @@ for i in indices:
 
 result = ' '.join([''.join([txt[0] for txt in item]) for item in result][1:])
 print(result)
+# print(len(result.split()))
